@@ -16,26 +16,35 @@ import java.util.ArrayList;
 public class miniCAD
 {
     static private JFrame frame;
-    static String state="choose";
-    static boolean filled=false;
     static  JPanel buttonPanel;
+    static myCanva canva;
     static Mouse listener;
-    static Color currentColor=new Color(0, 0, 0);
-    static Color  menuColor = new Color(205,92,92);
-    static int currentStroke = 1;
-
-    static Stroke chosenBrushSize[] = new Stroke[11];
-    static Stroke brushSize[] = new Stroke[11];
-
     static JTextField textBlock = new JTextField(8);
 
-    static myCanva canva;
-
+    static boolean filled=false;
+    static String state="choose";
     static int fontStyle=0;
     static int fontSize=25;
     static String fontType="¿¬Ìå";
 
+    static Color currentColor=new Color(0, 0, 0);
+    static Color  menuColor = new Color(205,92,92);
+    static int currentStroke = 1;
+    static Stroke chosenBrushSize[] = new Stroke[11];
+    static Stroke brushSize[] = new Stroke[11];
 
+    public static void main(String[] args) 
+    {
+        frame = new JFrame();
+        frame.setTitle("miniCAD");
+        frame.setSize(800,600);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        CrateMenuBar();
+        LayoutPanel();
+        frame.setVisible(true);
+        textBlock.setVisible(false);
+    }
     static void enumFonts(JMenuBar target)
     {
         GraphicsEnvironment e = 
@@ -213,29 +222,10 @@ public class miniCAD
         frame.add(buttonPanel);
         frame.add(canva);
     }
-
-    public static void main(String[] args) 
-    {
-        frame = new JFrame();
-        frame.setTitle("miniCAD");
-        frame.setSize(800,600);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
-
-        CrateMenuBar();
-        LayoutPanel();
-    
-
-
-        frame.setVisible(true);
-        
-        textBlock.setVisible(false);
-        //frame.repaint();
-        //frame.pack();
-    }
 }
+
+
+
 class checkBoxEvent implements ActionListener
 {
     public void actionPerformed(ActionEvent e)
