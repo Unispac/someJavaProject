@@ -1,0 +1,2 @@
+Main-Class: markUp 
+Class-Path: lib/md2x-1.0.1.jar  

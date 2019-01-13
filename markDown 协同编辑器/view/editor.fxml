@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+ minWidth="-Infinity" onKeyPressed="#keyDown" onKeyReleased="#input" prefHeight="878.0" 
+ prefWidth="1536.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" 
+ xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.Controller.Controller">
+   <children>
+      <TextArea fx:id="inputArea" layoutX="293.0" layoutY="63.0" prefHeight="774.0" prefWidth="639.0" />
+      <MenuBar layoutY="2.0" prefHeight="35.0" prefWidth="1536.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="OpenFile" mnemonicParsing="false" onAction="#toOpenFile" text="Open" />
+                  <MenuItem fx:id="SaveFile" mnemonicParsing="false" onAction="#toSaveFile" text="Save" />
+                  <MenuItem fx:id="saveAs" mnemonicParsing="false" onAction="#toSaveAsFile" text="Save As" />
+                  <MenuItem fx:id="exportHtml" mnemonicParsing="false" onAction="#toHtml" text="Export As Html" />
+                  <MenuItem fx:id="Exit" mnemonicParsing="false" onAction="#toExit" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem fx:id="closeFile" mnemonicParsing="false" onAction="#toClose" text="Delete" />
+                  <MenuItem fx:id="buildServer" mnemonicParsing="false" onAction="#toBuildServer" text="Build Server" />
+                  <MenuItem fx:id="connectServer" mnemonicParsing="false" onAction="#toConnectServer" text="Connect Server" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#showHelpInfo" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TextArea fx:id="logField" editable="false" layoutX="1037.0" layoutY="130.0" prefHeight="261.0" prefWidth="418.0" />
+      <Text fill="WHITE" layoutX="1171.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connecting log" wrappingWidth="150.240234375">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="1349.0" layoutY="481.0" mnemonicParsing="false" onAction="#toBuildByTextField" prefHeight="33.0" prefWidth="143.0" text="Build Server" />
+      <Button layoutX="1377.0" layoutY="635.0" mnemonicParsing="false" onAction="#toConnectByTextField" prefHeight="33.0" prefWidth="105.0" text="Connect" />
+      <Button layoutX="1186.0" layoutY="406.0" mnemonicParsing="false" onAction="#toDisconnected" text="Disconnect" textAlignment="CENTER" />
+      <TextField fx:id="localPortField" layoutX="1115.0" layoutY="479.0" prefHeight="37.0" prefWidth="206.0" />
+      <Text fill="WHITE" layoutX="980.0" layoutY="504.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Local Port :">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="971.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remote IP : ">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="remoteIPField" layoutX="1115.0" layoutY="579.0" />
+      <Text fill="WHITE" layoutX="954.0" layoutY="658.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remote Port : ">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="remotePortField" layoutX="1115.0" layoutY="633.0" />
+      <Text fill="WHITE" layoutX="89.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Head Line">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Text>
+      <TitledPane animated="false" layoutX="19.0" layoutY="172.0" maxWidth="252.0" prefHeight="115.0" prefWidth="252.0" text="Main">
+         <content>
+            <FlowPane fx:id="headLineField" maxWidth="200.0" prefHeight="200.0" prefWidth="200.0" />
+         </content>
+      </TitledPane>
+      <ImageView fitHeight="115.0" fitWidth="149.0" layoutX="991.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@author.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="1142.0" layoutY="768.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Developed By Unispac">
+         <font>
+            <Font name="Ink Free" size="36.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1432.0" layoutY="817.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@ ZJU">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
