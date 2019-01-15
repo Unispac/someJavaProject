@@ -44,6 +44,8 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
 import javafx.scene.web.HTMLEditor;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 class headLine
 {
@@ -70,7 +72,8 @@ public class Controller implements Initializable
     private TextField remotePortField;
     @FXML
     private FlowPane headLineField;
-
+    @FXML
+    private WebView myBrowser;
     
 
     private Alert HelpInfo=new Alert(Alert.AlertType.INFORMATION);
@@ -84,7 +87,10 @@ public class Controller implements Initializable
     private boolean underPunished=false;
     //private Timer updateHeadLineTimer;
     private String lastText;
+    private String lastRendering;
     private headLine levelStack[]=new headLine[12];
+    private WebEngine myEngine;
+    private Md2x myTranslator=new Md2x();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) 
@@ -117,6 +123,7 @@ public class Controller implements Initializable
         Main.logInfo=logField;
 
         for(int i=0;i<12;i++)levelStack[i]=new headLine("", 0);
+        myEngine=myBrowser.getEngine();
         /*updateHeadLineTimer=new Timer();
         updateHeadLineTimer.scheduleAtFixedRate
         (
@@ -246,9 +253,9 @@ public class Controller implements Initializable
         if(myFile!=null)
         try
         {
-            Md2x md2x=new Md2x();
+           // Md2x md2x=new Md2x();
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(myFile.getAbsolutePath()),"UTF-8"));
-            out.write(md2x.parse(inputArea.getText()));
+            out.write(myTranslator.parse(inputArea.getText()));
             out.close();
         }catch(Exception e)
         {
@@ -415,5 +422,12 @@ public class Controller implements Initializable
                 }
             }
         }
+    }
+    public void renderHtml()
+    {
+        String toRender=inputArea.getText();
+        if(lastRendering!=null&&toRender.equals(lastRendering))return;
+        else lastRendering=toRender;
+       myEngine.loadContent(myTranslator.parse(toRender));
     }
 }

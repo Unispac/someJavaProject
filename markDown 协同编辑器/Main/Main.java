@@ -107,6 +107,7 @@ public class Main extends Application
                             public void run() 
                             {
                                 currentController.checkHeadLine();
+                                currentController.renderHtml();
                             }
                         }
                     );
